@@ -71,10 +71,10 @@ __webpack_require__(1);
 __webpack_require__(2);
 
 const gpu = new GPU();
-console.log('gpu', gpu);
+console.log('GPU', gpu);
 
 const opt = {
-    dimensions: [1e7 + 9999999]
+    dimensions: [1e8]
 };
 
 const myFunc = gpu.createKernel(function() {
@@ -97,14 +97,17 @@ const result = myFunc();
 var n = result.length;
 var sum = 0;
 
+//console.log('result', result);
+
 while(--n){
     if (result[n] > 0){
-        sum = parseInt(result[n]) + parseInt(sum);
+        //console.log('result ', result[n]);
+        sum = result[n] + sum;
     }
 }
 var t2 = new Date();
 
-console.log('result', sum, (t2-t1)/1000)
+console.log('Final', sum, (t2-t1)/1000)
 
 /***/ }),
 /* 1 */

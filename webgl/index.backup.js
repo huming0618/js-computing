@@ -5,7 +5,7 @@ const gpu = new GPU();
 console.log('GPU', gpu);
 
 const opt = {
-    dimensions: [1e8]
+    dimensions: [1e7+1e6*6]
 };
 
 const myFunc = gpu.createKernel(function() {
