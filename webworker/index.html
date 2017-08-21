@@ -1,29 +1,4 @@
 <script type="text/js-worker">
-  var result;
-  self.addEventListener('message', function (e) {
   
-    var fromNum = e.data[0];
-    var toNum = e.data[1];
-
-    var cnt = 0, i;
-  
-    var t1 = new Date();
-    console.log('start webworker', t1, e.data);
-    for (i=fromNum;i<toNum+1;i++){
-	
-	    var str = i+'';
-      var temp = str.split('');
-      var n;
-      for (n=0;n<temp.length;n++){
-    	if (temp[n] === '2'){
-    	  cnt++;
-      }
-    }
-  }
-    var t2 = new Date();
-    console.log('done webworker', (t2-t1)/1000, t2, t1, 'Count', cnt);
-    self.postMessage('Done ' + (t2-t1) + ' ' + cnt)
-  
-  }, false);
 </script>
 
