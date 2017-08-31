@@ -13,8 +13,8 @@
         if (test === 2){
         	cnt++;
         }
-        //tmp = parseInt(tmp/10)
-        tmp = Math.floor(tmp/10)
+        tmp = parseInt(tmp/10)
+        //tmp = Math.floor(tmp/10)
       }
     }
 

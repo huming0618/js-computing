@@ -2,20 +2,50 @@
     <head>
         <style>
             .main {
-                margin: 120px auto;
+                margin: 30px auto;
+                width: 600px;
+                padding: 30px;
+            }
+            .main>div{
+                margin: auto;
+                text-align: center;
             }
             .gif{
                 background-image: url(images/1330852530564_yi8h9c.gif!bigger);
                 background-position: center center;
-                width: 200px;
-                height: 200px;
+                background-size: cover;
+                width: 480px;
+                height: 360px;
+            }
+            .action button{
+                margin-top: 30px;
+                height: 60px;
+                width: 180px;
+                font-size: 2rem;
             }
             .result {
+                line-height: 75px;
+                font-size: 1.2rem;
                 color: red;
+            }
+            .title {
+                position: fixed;
+                width: 100%;
+                margin: 0;
+                top: 0;
+                left: 0;
+                height: 30px;
+                line-height: 30px;
+                background-color: navy;
+                text-align: center;
+                color: white;
             }
         </style>
     </head>
     <body>
+        <div class="title">
+            Original
+        </div>
         <div class="main">
             <div class="gif">  
             </div>
