@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webgl": "webpack --config webgl/webpack.config.js",
+    "wasm": "cd wasm & python -m SimpleHTTPServer 3000",
     "test": "test"
   },
   "author": "",

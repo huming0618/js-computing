@@ -43,7 +43,7 @@ function compute() {
     worker.postMessage([fromNum, toNum]);
   }
 
-  
+  //5 workers
   assignToWorker(1, 12500000);
   assignToWorker(12500001, 25000000);
   assignToWorker(25000001, 50000000);
