@@ -1,4 +1,91 @@
-<script type="text/js-worker">
-  
-</script>
-
+<html>
+        <head>
+            <style>
+                .main {
+                    margin: 30px auto;
+                    width: 600px;
+                    padding: 30px;
+                }
+                .main>div{
+                    margin: auto;
+                    text-align: center;
+                }
+                .gif{
+                    background-image: url(images/1330852530564_yi8h9c.gif!bigger);
+                    background-position: center center;
+                    background-size: cover;
+                    width: 480px;
+                    height: 360px;
+                }
+                .action button{
+                    margin-top: 30px;
+                    height: 60px;
+                    width: 180px;
+                    font-size: 2rem;
+                }
+                .result {
+                    line-height: 75px;
+                    font-size: 1.2rem;
+                    color: red;
+                }
+                .title {
+                    position: fixed;
+                    width: 100%;
+                    margin: 0;
+                    top: 0;
+                    left: 0;
+                    height: 30px;
+                    line-height: 30px;
+                    background-color: blueviolet;
+                    text-align: center;
+                    color: white;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="title">
+                WebWorker
+            </div>
+            <div class="main">
+                <div class="gif">  
+                </div>
+                <div class="action">
+                    <button id="start">Start</button>
+                </div>
+                <div class="result" id="result">
+    
+                </div>
+            </div>
+            <script src="index.js"></script>
+            <script type="text/js-worker">
+                self.addEventListener('message', function (e) {
+                    
+                      var fromNum = e.data[0];
+                      var toNum = e.data[1];
+                    
+                      var cnt = 0, i;
+                    
+                      var t1 = new Date();
+                      console.log('start webworker', t1, e.data);
+                    
+                      for (i=fromNum;i<toNum+1;i++){
+                      
+                        var tmp = i;
+                        while(tmp > 0){
+                          var test = tmp % 10;
+                          if (test === 2){
+                            cnt++;
+                          }
+                          //tmp = parseInt(tmp/10)
+                          tmp = Math.floor(tmp/10)
+                        }
+                      }
+                    
+                      var t2 = new Date();
+                      //console.log('done webworker', (t2-t1)/1000, t2, t1, 'Count', cnt);
+                      self.postMessage(cnt)
+                    
+                }, false);
+              </script>
+        </body>
+    </html>
