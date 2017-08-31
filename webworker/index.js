@@ -2,15 +2,7 @@
 var resultPanel = document.getElementById('result');
 
 document.getElementById('start').onclick = function(){
-    var t1 = new Date();
-    console.log('start', t1);
-
-    var count = compute();
-    var t2 = new Date();
-
-    console.log('done with origin', (t2-t1)/1000, t2, t1, 'Count', count);
-
-    resultPanel.innerHTML = 'Count = ' + count + ' with duration: ' + (t2-t1)/1000;
+    compute();
 }
 
 
@@ -23,14 +15,28 @@ function compute() {
     { type: 'text/javascript' }
   );
 
-  
+  var t1 = new Date();
+  console.log('start', t1);
+
+  var ack = 0;
+  var count = 0;
+
   function assignToWorker(fromNum, toNum){
       // Create a new worker containing all "text/js-worker" scripts.
     var worker = new Worker(window.URL.createObjectURL(blob));
 
     // Listen for a message from the worker
+
     worker.addEventListener('message', function (e) {
-      console.log('From Worker', e.data);
+      
+      ack ++;
+      count = count + e.data;
+      console.log(`From Worker ${ack} with result > `, e.data);
+      if (ack === 5){
+        var t2 = new Date();
+        console.log('done with worker', (t2-t1)/1000, t2, t1, 'Count', count);
+        resultPanel.innerHTML = 'Count = ' + count + ' with duration: ' + (t2-t1)/1000;
+      }
     }, false);
 
     // Start the worker
